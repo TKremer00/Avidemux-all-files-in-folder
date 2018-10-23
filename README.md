@@ -12,6 +12,9 @@ In the applyAdmFilters methode you have to put your filters exept the filters :
   <li>adm.markerA = 0
   <li>adm.markerB = ......
 </ul>
-  
+
+## How to get your own filter
+To get your own filter you need to select 1 video. Apply all filters to it. When you are done you go to file>Project script>Save as Project. Then you need to open that file and all your settings are there.
+
 ## How to use
 To run the script you have to download and install <a href="http://avidemux.sourceforge.net/">avidemux</a>.Then you click file>Project script>Run Project. Then you select this file. If the script runs you are promt to select a folder this is the folder where the files that you want to apply filters to are. Then you have to select the folder where you want to save to. 
