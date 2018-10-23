@@ -2,7 +2,7 @@ import os
 
 gui = Gui()
 adm = Avidemux()
-#Place your extention to start whit.
+#Place your extention to start with.
 ext = "mp4"
 sep = "\\"
 
