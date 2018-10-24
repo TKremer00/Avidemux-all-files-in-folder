@@ -14,11 +14,12 @@ inputFolder = gui.dirSelect("Select the source folder", "test")
 def convert(filein):   
   filename = basename(filein)
   dir = dirname(filein)
+  
   if(0 == adm.loadVideo(filein)):
       ui.displayError("oops","cannot load "+filein)
       raise
   
-  applyAdmFilters(filein)
+  applyAdmFilters()
   #save to the selected folder whit the same name as started
   adm.save(folder_to_save + sep + filename)
   
@@ -35,7 +36,7 @@ adm.addSegment(0, 0, .....)
 adm.markerA = 0
 adm.markerB = ......
 '''  
-def applyAdmFilters(filein):
+def applyAdmFilters():
   adm.videoCodec("xvid4", "params=CBR=1500", "profile=244", "rdMode=3", "motionEstimation=3", "cqmMode=0", "arMode=1", "maxBFrame=2", "maxKeyFrameInterval=200", "nbThreads=99", "qMin=2", "qMax=25", "rdOnBFrame=True", "hqAcPred=True"
   , "optimizeChrome=True", "trellis=True", "useXvidFCC=False")
   adm.addVideoFilter("asharp", "t=1.000000", "d=1.000000", "b=4.000000", "bf=False")
@@ -52,15 +53,14 @@ def applyAdmFilters(filein):
   adm.setContainer("MP4", "muxerType=0", "useAlternateMp3Tag=True", "forceAspectRatio=False", "aspectRatio=1")
   
 #
-try : 
-	list = get_folder_content(inputFolder,ext)
-	#Select a save folder if there are files in the list
-	if(list is None):
-	    raise
-	else:
-        folder_to_save = gui.dirSelect("Select a folder to save to")	
-	
-	for i in list:
-        convert(i)
+try: 
+  list = get_folder_content(inputFolder,ext)
+  #Select a save folder if there are files in the list
+  if(list is None):
+    raise
+   else:
+    folder_to_save = gui.dirSelect("Select a folder to save to")	
+   for i in list:
+    convert(i)
 except:
 	gui.displayError("Error","An issue occurred")
