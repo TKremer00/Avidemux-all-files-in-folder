@@ -6,14 +6,16 @@ adm = Avidemux()
 ext = "mp4"
 sep = "\\"
 
+#Custom name ? replace None
+filename = None
 
 #always let the user first select source folder 
 inputFolder = gui.dirSelect("Select the source folder", "test")
 
 #apply filters
-def convert(filein):   
-  filename = basename(filein)
-  dir = dirname(filein)
+def convert(filein):  
+  if(filename is None):
+	filename = basename(filein)
   
   if(0 == adm.loadVideo(filein)):
       ui.displayError("oops","cannot load "+filein)
